@@ -1,0 +1,24 @@
+<div class="row list-container">
+    <div class="col-3">
+        <div class="accordion" id="accordionExample">
+            <a class="nav-link text-left nav-header" data-toggle="collapse" href="#IcProject" role="button" 
+            aria-expanded="false">Imperial College London</a>
+            <div id="IcProject" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <a class="nav-link nav-sublink" routerLink='/projects/1' routerLinkActive='active'>Project 1</a>
+                <a class="nav-link nav-sublink" routerLink='/projects/2' routerLinkActive='active'>Project 2</a>
+            </div>
+
+            <a class="nav-link text-left nav-header" data-toggle="collapse" href="#UobProject" role="button" 
+                aria-expanded="false">University of Bristol</a>
+            <div id="UobProject" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <a class="nav-link nav-sublink" routerLink='/projects/1' routerLinkActive='active'>Project 1</a>
+                <a class="nav-link nav-sublink" routerLink='/projects/2' routerLinkActive='active'>Project 2</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="tab-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

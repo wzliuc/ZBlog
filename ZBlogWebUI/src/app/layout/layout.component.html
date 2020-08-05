@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink='/home'>ZBlog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" [ngClass]="{active: isActive()}"
+          id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          About me
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLinkActive='active' routerLink='/aboutme/experience'>My experience</a>
+          <a class="dropdown-item" routerLinkActive='active' routerLink='/aboutme/education'>My education</a>
+          <a class="dropdown-item" routerLinkActive='active' routerLink='/aboutme/skills'>My skills</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink='/projects' routerLinkActive='active'>Projects</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

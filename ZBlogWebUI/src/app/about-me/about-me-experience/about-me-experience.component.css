@@ -1,0 +1,33 @@
+.card-img-crop {
+    width: auto;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding-bottom: 0.75rem;
+}
+
+.card-margin {
+    margin-bottom: 30px;
+}
+
+.card-text-body {
+    margin-bottom: 0px;
+}
+
+.text-floatL {
+    float: left;
+}
+
+.text-floatR {
+    float: right;
+}
+
+.text-clear-float{
+    clear: both;
+}
+
+.badge-space {
+    margin-left: 5px;
+}

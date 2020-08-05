@@ -1,0 +1,13 @@
+.card-img-crop {
+    width: auto;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-title {
+    margin-bottom: 0;
+}
+
+.card-margin {
+    margin-bottom: 30px;
+}

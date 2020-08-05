@@ -1,0 +1,11 @@
+<div class="card card-margin" *ngFor="let skill of mySkills">
+  <img [src]="skill.imgUrl" class="card-img-top card-img-crop" alt="skill">
+  <div class="card-body">
+    <h5 class="card-title">{{ skill.type}}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let set of skill.skillSets">
+      <strong *ngIf="set.name">{{ set.name }}:</strong>  {{ set.skills.join(', ') }}
+    </li>
+  </ul>
+</div>
