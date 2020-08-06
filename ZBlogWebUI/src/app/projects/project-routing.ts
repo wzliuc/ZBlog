@@ -6,7 +6,7 @@ import { ProjectPdfComponent } from './project-pdf/project-pdf.component';
 const routes: Routes = [
   {path:'projects', component: ProjectListComponent, children: [
     {path: '', redirectTo: '', pathMatch: 'full'},
-    {path: ':id', component:ProjectPdfComponent},
+    {path: ':pdfName', component:ProjectPdfComponent},
   ]},
 ];
 
