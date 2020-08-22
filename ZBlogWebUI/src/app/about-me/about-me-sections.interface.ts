@@ -4,6 +4,7 @@ export interface Description {
 }
 
 export interface Experience {
+    id: number;
     companyName: string;
     role: string;
     location: string;

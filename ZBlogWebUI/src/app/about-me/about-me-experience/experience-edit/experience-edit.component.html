@@ -1,0 +1,107 @@
+<div class="form-container">
+    <form [formGroup]='expForm' (ngSubmit)='onSubmit()'>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="id">Id</label>
+                <input class="form-control" type="text" formControlName="id" id="id">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="companyName" [ngClass]="{'text-danger':isValid('companyName')}">Company Name</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('companyName')}" 
+                    formControlName="companyName" id="companyName">
+                <div class="invalid-input" *ngIf="isValid('companyName')">
+                    Please enter a company name.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="role" [ngClass]="{'text-danger':isValid('role')}">Role</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('role')}" 
+                    formControlName="role" id="role">
+                <div class="invalid-input" *ngIf="isValid('role')">
+                    Please specify the role.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="location" [ngClass]="{'text-danger':isValid('location')}">Location</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('location')}" 
+                    formControlName="location" id="location">
+                <div class="invalid-input" *ngIf="isValid('location')">
+                    Please specify the location.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="flag">Flag</label>
+                <input class="form-control" type="text" formControlName="flag" id="flag">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="startDate" [ngClass]="{'text-danger':isValid('startDate')}">Start Date</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('startDate')}" 
+                    formControlName="startDate" id="startDate">
+                <div class="invalid-input" *ngIf="isValid('startDate')">
+                    Please specify the start date.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="endDate" [ngClass]="{'text-danger':isValid('endDate')}">End Date</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('endDate')}" 
+                    formControlName="endDate" id="endDate">
+                <div class="invalid-input" *ngIf="isValid('endDate')">
+                    Please specify the end date.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label for="imgUrl" [ngClass]="{'text-danger':isValid('imgUrl')}">Image Url</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('imgUrl')}" 
+                    formControlName="imgUrl" id="imgUrl">
+                <div class="invalid-input" *ngIf="isValid('imgUrl')">
+                    Please provide the image URL.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12" formArrayName="descriptions">
+                <label>Descriptions</label>
+                <button class="btn btn-outline-success add-btn" (click)="addDescription()" type="button">+</button>
+                <div *ngFor="let des of descriptions.controls; let d=index">
+                    <div [formGroupName]="d">
+                        <div class="input-group mb-1">
+                            <textarea class="form-control" formControlName="intro" [id]="'descrip_' + d" rows="3"></textarea>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" (click)="deleteDescription(d)" type="button">-</button>
+                            </div>
+                        </div>
+                        <div formArrayName="bulletPoints">
+                            <div class="input-group flex-nowrap mb-1"
+                                    *ngFor="let bp of des.controls.bulletPoints.controls; let i=index">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" [id]="'bp' + i">•</span>
+                                </div>
+                                <input type="text" class="form-control" [formControlName]="i">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-danger" (click)="deleteBulletPoint(d, i)" type="button">-</button>
+                                </div>
+                            </div>
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                  <button class="btn btn-outline-success add-bp" (click)="addBulletPoint(d)" type="button">+</button>
+                                </div>
+                                <input type="text" class="form-control" disabled>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-outline-danger button-floatR" type="button" (click)="delete()">Delete</button>
+        <button class="btn btn-outline-primary button-floatR" type="submit">Submit</button>
+        <button class="btn btn-outline-secondary button-floatL" type="button" routerLink='/aboutme'>Back</button>
+    </form>
+</div>

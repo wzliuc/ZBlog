@@ -20,6 +20,16 @@
     float: left;
 }
 
+.card-caption {
+    margin-bottom: 0;
+}
+
+.button-pos {
+    position: absolute;
+    bottom: 315px;
+    right: 15px;
+}
+
 .text-floatR {
     float: right;
 }
@@ -30,4 +40,8 @@
 
 .badge-space {
     margin-left: 5px;
+}
+
+.button-floatR {
+    float: right;
 }

@@ -1,3 +1,8 @@
 .list-container {
     padding: 20px 0px;
 }
+
+.router-outlet {
+    padding-right: 2rem;
+    padding-left: 1rem;
+}

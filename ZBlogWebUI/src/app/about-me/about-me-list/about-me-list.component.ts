@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ExperienceService } from '../about-me-experience/experience.service';
 
 @Component({
   templateUrl: './about-me-list.component.html',
@@ -7,9 +7,10 @@ import { Router } from '@angular/router';
 })
 export class AboutMeListComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private expService: ExperienceService) { }
 
   ngOnInit(): void {
+    this.expService.GetAll();
   }
 
 }
