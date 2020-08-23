@@ -54,6 +54,7 @@ func HandleExperience(w http.ResponseWriter, r *http.Request) {
 		err := decoder.Decode(&exp)
 		if err != nil {
 			common.LogError(err)
+			return
 		}
 		err = repo.Update(exp)
 		if err != nil {

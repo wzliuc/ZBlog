@@ -7,6 +7,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
 import { AboutMeModule } from './about-me/about-me.module';
 import { ProjectModule } from './projects/project.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ProjectModule } from './projects/project.module';
     AboutMeModule,
     ProjectModule,
     AppRoutingModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

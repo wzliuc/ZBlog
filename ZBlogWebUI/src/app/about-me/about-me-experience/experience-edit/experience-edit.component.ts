@@ -13,6 +13,7 @@ export class ExperienceEditComponent implements OnInit {
   expForm: FormGroup;
   exp: Experience;
   isAdd = false;
+  toPresent = false;
   get descriptions() {
     return this.expForm.get('descriptions') as FormArray;
   }
@@ -40,6 +41,11 @@ export class ExperienceEditComponent implements OnInit {
   }
 
   initialiseForm() {
+    if (this.exp !== undefined) {
+      let date = this.exp.endDate as unknown as string;
+      console.log(date.includes('1000'))
+      this.toPresent = date.includes('1000') ? true : false;
+    }
     this.expForm = this.fb.group({
       id: [{value: this.exp?.id, disabled: true}, Validators.required],
       companyName: [this.exp?.companyName, Validators.required],
@@ -48,10 +54,20 @@ export class ExperienceEditComponent implements OnInit {
       flag: this.exp?.flag,
       imgUrl: [this.exp?.imgUrl, Validators.required],
       startDate: [this.exp?.startDate, Validators.required],
-      endDate: [this.exp?.endDate, Validators.required],
+      endDate: [{value: this.exp?.endDate, disabled: this.toPresent}, Validators.required],
       descriptions: this.fb.array([]),
     });
     this.populateDescriptions();
+  }
+
+  toggleToPresent(value: boolean): void {
+    const endDateControl = this.expForm.get('endDate');
+    this.toPresent = value;
+    if (this.toPresent) {
+      endDateControl.disable();
+    } else {
+      endDateControl.enable();
+    }
   }
 
   populateDescriptions(): void {
@@ -102,7 +118,21 @@ export class ExperienceEditComponent implements OnInit {
     this.router.navigateByUrl('/aboutme/experience');
   }
 
+  toUtc(date: string): number {
+    let dateArr = date.split('-');
+    let year = parseInt(dateArr[0], 10);
+    let month = parseInt(dateArr[1], 10);
+    let day = parseInt(dateArr[2], 10);
+
+    return Date.UTC(year, month-1, day);
+  }
+
   onSubmit(): void {
+    let startStr = this.expForm.get('startDate').value;
+    let endStr = this.expForm.get('endDate').value;
+    if (this.toPresent) {
+      endStr='1000-01-01';
+    }
     let expToAdd: Experience = {
       id: this.expForm.get('id').value,
       companyName: this.expForm.get('companyName').value,
@@ -110,8 +140,8 @@ export class ExperienceEditComponent implements OnInit {
       location: this.expForm.get('location').value,
       flag: this.expForm.get('flag').value,
       imgUrl: this.expForm.get('imgUrl').value,
-      startDate: this.expForm.get('startDate').value,
-      endDate: this.expForm.get('endDate').value,
+      startDate: new Date(this.toUtc(startStr)),
+      endDate: new Date(this.toUtc(endStr)),
       description: this.expForm.get('descriptions').value
     }
     if (this.isAdd) {
@@ -119,6 +149,6 @@ export class ExperienceEditComponent implements OnInit {
     } else {
       this.expService.Update(expToAdd);
     }
-    this.router.navigateByUrl('/aboutme/experience');
+    // this.router.navigateByUrl('/aboutme/experience');
   }
 }

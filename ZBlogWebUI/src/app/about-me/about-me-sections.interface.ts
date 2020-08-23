@@ -9,7 +9,7 @@ export interface Experience {
     role: string;
     location: string;
     startDate: Date;
-    endDate: Date | string;
+    endDate: Date;
     description: Description[];
     flag: string;
     imgUrl: string;

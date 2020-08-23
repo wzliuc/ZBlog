@@ -98,6 +98,9 @@ func (er *ExpRepo) Delete(ID int) error {
 }
 
 func addDescription(d model.Description, expID int) error {
+	if d.Intro == "" && len(d.BulletPoints) == 0 {
+		return nil
+	}
 	result, err := dbConnect.Exec(`
 		INSERT INTO ZBlogDB.Description (introduction, expid) VALUES (?, ?);
 		`,
