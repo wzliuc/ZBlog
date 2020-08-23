@@ -114,8 +114,8 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-outline-danger button-floatR" type="button" (click)="delete()">Delete</button>
-        <button class="btn btn-outline-primary button-floatR" type="submit" [disabled]='!expForm.valid'>Submit</button>
+        <button class="btn btn-outline-danger button-floatR" type="button" (click)="delete()" *ngIf='!isAdd'>Delete</button>
+        <button class="btn btn-outline-primary button-floatR" type="submit" [disabled]='!expForm.valid'>Create</button>
         <button class="btn btn-outline-secondary button-floatL" type="button" routerLink='/aboutme'>Back</button>
     </form>
 </div>

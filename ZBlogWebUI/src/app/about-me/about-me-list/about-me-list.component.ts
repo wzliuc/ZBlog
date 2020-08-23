@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExperienceService } from '../about-me-experience/experience.service';
+import { ExperienceService } from '../about-me-experience/experience-services/experience.service';
 
 @Component({
   templateUrl: './about-me-list.component.html',

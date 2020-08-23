@@ -9,7 +9,7 @@ import { AboutMeExperienceComponent } from './about-me-experience/about-me-exper
 import { AboutMeSkillsComponent } from './about-me-skills/about-me-skills.component';
 import { ExperienceEditComponent } from './about-me-experience/experience-edit/experience-edit.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CustomAdapter, CustomDateParserFormatter } from './about-me-experience/experience-edit/datepicker.adapter';
+import { CustomAdapter, CustomDateParserFormatter } from './about-me-experience/experience-services/datepicker.adapter';
 
 @NgModule({
   declarations: [

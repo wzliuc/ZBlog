@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Experience } from '../about-me-sections.interface';
+import { Experience } from '../../about-me-sections.interface';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
