@@ -10,6 +10,7 @@ import { AboutMeSkillsComponent } from './about-me-skills/about-me-skills.compon
 import { ExperienceEditComponent } from './about-me-experience/experience-edit/experience-edit.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomAdapter, CustomDateParserFormatter } from './about-me-experience/experience-services/datepicker.adapter';
+import { EducationEditComponent } from './about-me-education/education-edit/education-edit.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CustomAdapter, CustomDateParserFormatter } from './about-me-experience/
     AboutMeEducationComponent, 
     AboutMeExperienceComponent, 
     AboutMeSkillsComponent,
-    ExperienceEditComponent
+    ExperienceEditComponent,
+    EducationEditComponent
   ],
   imports: [
     CommonModule,

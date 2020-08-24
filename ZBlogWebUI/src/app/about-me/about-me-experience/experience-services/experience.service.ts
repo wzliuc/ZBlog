@@ -35,9 +35,9 @@ export class ExperienceService {
     });
   }
 
-  public Update(expToAdd: Experience): void {
-    const putUrl = this.expUrl + '/' + expToAdd.id;
-    this.http.put<Experience>(putUrl, expToAdd).subscribe( 
+  public Update(expToUpdate: Experience): void {
+    const putUrl = this.expUrl + '/' + expToUpdate.id;
+    this.http.put<Experience>(putUrl, expToUpdate).subscribe( 
       data => {
         this.GetAll();
       },

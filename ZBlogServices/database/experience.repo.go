@@ -7,8 +7,8 @@ import (
 // ExpRepo represents DTL for the experience object
 type ExpRepo struct{}
 
-// NewExpoRepo creates a new instance of expRepo
-func NewExpoRepo() *ExpRepo {
+// NewExpRepo creates a new instance of expRepo
+func NewExpRepo() *ExpRepo {
 	return &ExpRepo{}
 }
 

@@ -3,8 +3,7 @@
         <h3 class="card-title text-floatL">{{exp.companyName}}</h3>
         <span class="badge badge-success badge-space">{{exp.flag}}</span>
         <h6 class="card-title text-floatR">
-            {{exp.startDate | date:'MMM y'}} - <span *ngIf='!exp.endDate.includes("1000"); else toPresent'>{{exp.endDate | date:'MMM y'}}</span>
-            <ng-template #toPresent>Present</ng-template>
+            {{exp.startDate | date:'MMM y'}} - {{exp.endDate.includes("1000") ? 'Present' : (exp.endDate | date:'MMM y')}}
         </h6>
         <h5 class="card-title text-clear-float">{{exp.role}}</h5>
         <div *ngFor='let d of exp.description'>

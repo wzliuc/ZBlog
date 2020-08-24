@@ -13,9 +13,11 @@ func RegisterHandlers() {
 	ExperiencesHandler := http.HandlerFunc(HandleExperiences)
 	ExperienceHandler := http.HandlerFunc(HandleExperience)
 	EducationHandler := http.HandlerFunc(HandleEducation)
+	EducationsHandler := http.HandlerFunc(HandleEducations)
 	http.Handle("/experience", middleware.SetCors(ExperiencesHandler))
 	http.Handle("/experience/", middleware.SetCors(ExperienceHandler))
-	http.Handle("/education", middleware.SetCors(EducationHandler))
+	http.Handle("/education", middleware.SetCors(EducationsHandler))
+	http.Handle("/education/", middleware.SetCors(EducationHandler))
 
 	common.LogInfo("Handler registration completed")
 }

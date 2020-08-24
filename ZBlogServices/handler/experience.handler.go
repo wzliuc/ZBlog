@@ -12,7 +12,7 @@ import (
 // HandleExperiences handles the request for multiple experience info
 func HandleExperiences(w http.ResponseWriter, r *http.Request) {
 	common.LogInfo(fmt.Sprintf("Experiences %s method called", r.Method))
-	repo := database.NewExpoRepo()
+	repo := database.NewExpRepo()
 	switch r.Method {
 	case http.MethodGet:
 		exps, err := repo.GetAll()
@@ -46,7 +46,7 @@ func HandleExperiences(w http.ResponseWriter, r *http.Request) {
 func HandleExperience(w http.ResponseWriter, r *http.Request) {
 	common.LogInfo(fmt.Sprintf("Experience %s method called", r.Method))
 	id := getID(r)
-	repo := database.NewExpoRepo()
+	repo := database.NewExpRepo()
 	switch r.Method {
 	case http.MethodPut:
 		var exp model.ExperienceDto

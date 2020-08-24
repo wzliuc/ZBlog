@@ -27,3 +27,17 @@
 .badge-space {
     margin-left: 5px;
 }
+
+.button-floatR {
+    float: right;
+}
+
+.button-pos {
+    position: absolute;
+    bottom: 315px;
+    right: 15px;
+}
+
+.card-caption {
+    margin-bottom: 0;
+}

@@ -1,5 +1,5 @@
 <div class="form-container">
-    <form [formGroup]='expForm' (ngSubmit)='onSubmit()'>
+    <form [formGroup]='eduForm' (ngSubmit)='onSubmit()'>
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="id">Id</label>
@@ -8,23 +8,31 @@
         </div>
         <div class="row">
             <div class="form-group col-md-6">
-                <label for="companyName" [ngClass]="{'text-danger':isValid('companyName')}">Company Name</label>
-                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('companyName')}" 
-                    formControlName="companyName" id="companyName">
-                <div class="invalid-input" *ngIf="isValid('companyName')">
-                    Please enter a company name.
+                <label for="uniName" [ngClass]="{'text-danger':isValid('uniName')}">University</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('uniName')}" 
+                    formControlName="uniName" id="uniName">
+                <div class="invalid-input" *ngIf="isValid('uniName')">
+                    Please enter a university name.
                 </div>
             </div>
             <div class="form-group col-md-6">
-                <label for="role" [ngClass]="{'text-danger':isValid('role')}">Role</label>
-                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('role')}" 
-                    formControlName="role" id="role">
-                <div class="invalid-input" *ngIf="isValid('role')">
-                    Please specify the role.
+                <label for="degree" [ngClass]="{'text-danger':isValid('degree')}">Degree</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('degree')}" 
+                    formControlName="degree" id="degree">
+                <div class="invalid-input" *ngIf="isValid('degree')">
+                    Please specify the degree.
                 </div>
             </div>
         </div>
         <div class="row">
+            <div class="form-group col-md-6">
+                <label for="courseName" [ngClass]="{'text-danger':isValid('courseName')}">Course Name</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('courseName')}" 
+                    formControlName="courseName" id="courseName">
+                <div class="invalid-input" *ngIf="isValid('courseName')">
+                    Please specify the Course Name.
+                </div>
+            </div>
             <div class="form-group col-md-6">
                 <label for="location" [ngClass]="{'text-danger':isValid('location')}">Location</label>
                 <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('location')}" 
@@ -33,9 +41,19 @@
                     Please specify the location.
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="form-group col-md-6">
                 <label for="flag">Flag</label>
                 <input class="form-control" type="text" formControlName="flag" id="flag">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="award" [ngClass]="{'text-danger':isValid('award')}">Award</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('award')}" 
+                    formControlName="award" id="award">
+                <div class="invalid-input" *ngIf="isValid('award')">
+                    Please specify the award.
+                </div>
             </div>
         </div>
         <div class="row">
@@ -71,7 +89,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-3">
+                <label for="imgCaption" [ngClass]="{'text-danger':isValid('imgCaption')}">Image caption</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('imgCaption')}" 
+                    formControlName="imgCaption" id="imgCaption">
+                <div class="invalid-input" *ngIf="isValid('imgCaption')">
+                    Please specify the image caption.
+                </div>
+            </div>
+            <div class="form-group col-md-9">
                 <label for="imgUrl" [ngClass]="{'text-danger':isValid('imgUrl')}">Image Url</label>
                 <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('imgUrl')}" 
                     formControlName="imgUrl" id="imgUrl">
@@ -81,41 +107,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-12" formArrayName="descriptions">
-                <label>Descriptions</label>
-                <button class="btn btn-outline-success add-btn" (click)="addDescription()" type="button">+</button>
-                <div *ngFor="let des of descriptions.controls; let d=index">
-                    <div [formGroupName]="d">
-                        <div class="input-group mb-1">
-                            <textarea class="form-control" formControlName="intro" [id]="'descrip_' + d" rows="3"></textarea>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-danger" (click)="deleteDescription(d)" type="button">-</button>
-                            </div>
-                        </div>
-                        <div formArrayName="bulletPoints">
-                            <div class="input-group flex-nowrap mb-1"
-                                    *ngFor="let bp of des.controls.bulletPoints.controls; let i=index">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" [id]="'bp' + i">•</span>
-                                </div>
-                                <input type="text" class="form-control" [formControlName]="i">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-danger" (click)="deleteBulletPoint(d, i)" type="button">-</button>
-                                </div>
-                            </div>
-                            <div class="input-group mb-1">
-                                <div class="input-group-prepend">
-                                  <button class="btn btn-outline-success add-bp" (click)="addBulletPoint(d)" type="button">+</button>
-                                </div>
-                                <input type="text" class="form-control" disabled>
-                              </div>
-                        </div>
-                    </div>
+            <div class="form-group col-md-12">
+                <label for="subjects" [ngClass]="{'text-danger':isValid('subjects')}">Subjects</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('subjects')}" 
+                    formControlName="subjects" id="subjects">
+                <div class="invalid-input" *ngIf="isValid('subjects')">
+                    Please specify the subjects.
                 </div>
             </div>
         </div>
         <button class="btn btn-outline-danger button-floatR" type="button" (click)="delete()" *ngIf='!isAdd'>Delete</button>
-        <button class="btn btn-outline-primary button-floatR" type="submit" [disabled]='!expForm.valid'>{{ isAdd ? 'Create' : 'Update'}}</button>
-        <button class="btn btn-outline-secondary button-floatL" type="button" routerLink='/aboutme'>Back</button>
+        <button class="btn btn-outline-primary button-floatR" type="submit" [disabled]='!eduForm.valid'>{{ isAdd ? 'Create' : 'Update'}}</button>
+        <button class="btn btn-outline-secondary button-floatL" type="button" routerLink='/aboutme/education'>Back</button>
     </form>
 </div>

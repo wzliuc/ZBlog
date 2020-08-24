@@ -16,17 +16,18 @@ export interface Experience {
 }
 
 export interface Education {
+    id: number;
     uniName: string;
     degree: string;
     courseName: string;
     location: string;
-    startDate: Date;
-    endDate: Date | string;
-    award: string;
-    subjects: string[];
-    imgUrl: string;
     flag: string;
+    award: string;
+    startDate: Date;
+    endDate: Date;
+    subjects: string[];
     imgCaption: string;
+    imgUrl: string;
 }
 
 export interface Skill {
