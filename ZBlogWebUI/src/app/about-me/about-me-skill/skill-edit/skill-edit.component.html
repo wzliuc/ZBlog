@@ -1,0 +1,50 @@
+<div class="form-container">
+    <form [formGroup]='skillForm' (ngSubmit)='onSubmit()'>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="id">Id</label>
+                <input class="form-control" type="text" formControlName="id" id="id">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="type" [ngClass]="{'text-danger':isValid('type')}">Type</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('type')}" 
+                    formControlName="type" id="type">
+                <div class="invalid-input" *ngIf="isValid('type')">
+                    Please specify the type.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="imgUrl" [ngClass]="{'text-danger':isValid('imgUrl')}">Image Url</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('imgUrl')}" 
+                    formControlName="imgUrl" id="imgUrl">
+                <div class="invalid-input" *ngIf="isValid('imgUrl')">
+                    Please provide the image URL.
+                </div>
+            </div>
+        </div>
+        <div class="form-group" formArrayName="sets">
+            <label>Skill sets</label>
+            <div class="row" *ngFor="let set of sets.controls; let s=index">
+                <div class="input-group mb-2 col-12" [formGroupName]='s'>
+                    <input type="text" class="form-control col-3" formControlName="name" [id]="'setName'+s">
+                    <input type="text" class="form-control col-9" formControlName="skills" [id]="'setSkill'+s">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-danger" (click)="deleteSkillSet(s)" type="button">-</button>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-0">
+                <input type="text" class="form-control col-3" disabled>
+                <input type="text" class="form-control col-9" disabled>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success" (click)="addSkillSet()" type="button">+</button>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-outline-danger button-floatR" type="button" (click)="delete()" *ngIf='!isAdd'>Delete</button>
+        <button class="btn btn-outline-primary button-floatR" type="submit" [disabled]='!skillForm.valid'>{{ isAdd ? 'Create' : 'Update'}}</button>
+        <button class="btn btn-outline-secondary button-floatL" type="button" routerLink='/aboutme/skill'>Back</button>
+    </form>
+</div>

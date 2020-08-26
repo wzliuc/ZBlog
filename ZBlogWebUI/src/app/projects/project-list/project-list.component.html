@@ -1,0 +1,19 @@
+<div class="row list-container">
+    <div class="col-2">
+        <div class="accordion" id="accordionExample">
+            <div *ngFor='let group of myProjects'>
+                <a class="nav-link text-left nav-header" data-toggle="collapse" [href]="'#Group'+group.id" role="button" 
+                aria-expanded="false">{{ group.organisationName }}</a>
+                <div [id]="'Group'+group.id" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <a class="nav-link nav-sublink" [routerLink]='["/projects", project.pdfName]' routerLinkActive='active'
+                        *ngFor='let project of group.projects'>{{ project.name }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class="tab-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="card card-margin" *ngFor="let exp of myExp$ | async">
+    <div class="card-body">
+        <h3 class="card-title text-floatL">{{exp.companyName}}</h3>
+        <span class="badge badge-success badge-space">{{exp.flag}}</span>
+        <h6 class="card-title text-floatR">
+            {{exp.startDate | date:'MMM y'}} - {{exp.endDate.includes("1000") ? 'Present' : (exp.endDate | date:'MMM y')}}
+        </h6>
+        <h5 class="card-title text-clear-float">{{exp.role}}</h5>
+        <div *ngFor='let d of exp.description'>
+            <p class="card-text card-text-body">
+                {{d.intro}}
+            </p>
+            <ul>
+                <li *ngFor='let bp of d.bulletPoints'>
+                    {{bp}}
+                </li>
+            </ul>
+        </div>
+        <p class="card-text card-caption"><small class="text-muted">Willis Towers Watson</small></p>
+        <button class="btn btn-outline-primary btn-sm button-pos" type="button" [routerLink]="exp.id">Edit</button>
+    </div>
+    <img [src]="exp.imgUrl" class="card-img-top card-img-crop" alt="IC">
+</div>
+<button class="btn btn-outline-primary button-floatR" type="button" routerLink='0'>Add</button>

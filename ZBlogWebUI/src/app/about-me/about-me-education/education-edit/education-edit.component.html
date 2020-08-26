@@ -1,0 +1,123 @@
+<div class="form-container">
+    <form [formGroup]='eduForm' (ngSubmit)='onSubmit()'>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="id">Id</label>
+                <input class="form-control" type="text" formControlName="id" id="id">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="uniName" [ngClass]="{'text-danger':isValid('uniName')}">University</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('uniName')}" 
+                    formControlName="uniName" id="uniName">
+                <div class="invalid-input" *ngIf="isValid('uniName')">
+                    Please enter a university name.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="degree" [ngClass]="{'text-danger':isValid('degree')}">Degree</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('degree')}" 
+                    formControlName="degree" id="degree">
+                <div class="invalid-input" *ngIf="isValid('degree')">
+                    Please specify the degree.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="courseName" [ngClass]="{'text-danger':isValid('courseName')}">Course Name</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('courseName')}" 
+                    formControlName="courseName" id="courseName">
+                <div class="invalid-input" *ngIf="isValid('courseName')">
+                    Please specify the Course Name.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="location" [ngClass]="{'text-danger':isValid('location')}">Location</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('location')}" 
+                    formControlName="location" id="location">
+                <div class="invalid-input" *ngIf="isValid('location')">
+                    Please specify the location.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="flag">Flag</label>
+                <input class="form-control" type="text" formControlName="flag" id="flag">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="award" [ngClass]="{'text-danger':isValid('award')}">Award</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('award')}" 
+                    formControlName="award" id="award">
+                <div class="invalid-input" *ngIf="isValid('award')">
+                    Please specify the award.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="startDate" [ngClass]="{'text-danger':isValid('startDate')}">Start Date</label>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="spd" ngbDatepicker #spd="ngbDatepicker"
+                        [ngClass]="{'is-invalid':isValid('startDate')}" formControlName="startDate" id="startDate">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="spd.toggle()" type="button"></button>
+                    </div>
+                </div>
+                <div class="invalid-input" *ngIf="isValid('startDate')">
+                    Please specify the start date.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="endDate" [ngClass]="{'text-danger':isValid('endDate')}">End Date</label>
+                <div class="check-float-right">
+                    <input class="form-check-input" type="checkbox" id="toPresent" [checked]='toPresent' (change)="toggleToPresent($event.target.checked)">
+                    <label class="form-check-label" for="toPresent">To present</label>
+                </div>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="edp" ngbDatepicker #edp="ngbDatepicker"
+                        [ngClass]="{'is-invalid':isValid('endDate')}" formControlName="endDate" id="endDate">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="edp.toggle()" type="button" [disabled]='toPresent'></button>
+                    </div>
+                </div>
+                <div class="invalid-input" *ngIf="isValid('endDate')">
+                    Please specify the end date.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="imgCaption" [ngClass]="{'text-danger':isValid('imgCaption')}">Image caption</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('imgCaption')}" 
+                    formControlName="imgCaption" id="imgCaption">
+                <div class="invalid-input" *ngIf="isValid('imgCaption')">
+                    Please specify the image caption.
+                </div>
+            </div>
+            <div class="form-group col-md-9">
+                <label for="imgUrl" [ngClass]="{'text-danger':isValid('imgUrl')}">Image Url</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('imgUrl')}" 
+                    formControlName="imgUrl" id="imgUrl">
+                <div class="invalid-input" *ngIf="isValid('imgUrl')">
+                    Please provide the image URL.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label for="subjects" [ngClass]="{'text-danger':isValid('subjects')}">Subjects</label>
+                <input class="form-control" type="text" [ngClass]="{'is-invalid':isValid('subjects')}" 
+                    formControlName="subjects" id="subjects">
+                <div class="invalid-input" *ngIf="isValid('subjects')">
+                    Please specify the subjects.
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-outline-danger button-floatR" type="button" (click)="delete()" *ngIf='!isAdd'>Delete</button>
+        <button class="btn btn-outline-primary button-floatR" type="submit" [disabled]='!eduForm.valid'>{{ isAdd ? 'Create' : 'Update'}}</button>
+        <button class="btn btn-outline-secondary button-floatL" type="button" routerLink='/aboutme/education'>Back</button>
+    </form>
+</div>

@@ -1,0 +1,19 @@
+<div class="card card-margin" *ngFor='let edu of myEdu$ | async'>
+    <div class="card-body">
+        <h3 class="card-title text-floatL">{{edu.uniName}}</h3>
+        <span class="badge badge-success badge-space">{{edu.flag}}</span>
+        <h6 class="card-title text-floatR">
+            {{edu.startDate | date:'MMM y'}} - {{edu.endDate.includes("1000") ? 'Present' : (edu.endDate | date:'MMM y')}}
+        </h6>
+        <h5 class="card-title text-clear-float">{{edu.degree}} {{edu.courseName}}</h5>
+        <p class="card-text">
+            <strong>Award: </strong>{{edu.award}}
+            <br/>
+            <strong>Relevant subjects: </strong>{{edu.subjects.join('; ')}}</p>
+        <p class="card-text card-caption"><small class="text-muted">{{edu.imgCaption}}</small></p>
+        <button class="btn btn-outline-primary btn-sm button-pos" type="button" [routerLink]="edu.id">Edit</button>
+    </div>
+    <img [src]='edu.imgUrl' class="card-img-top card-img-crop" alt="Uni">
+</div>
+
+<button class="btn btn-outline-primary button-floatR" type="button" routerLink='0'>Add</button>

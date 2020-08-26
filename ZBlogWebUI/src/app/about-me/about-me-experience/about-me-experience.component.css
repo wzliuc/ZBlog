@@ -1,0 +1,47 @@
+.card-img-crop {
+    width: auto;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding-bottom: 0.75rem;
+}
+
+.card-margin {
+    margin-bottom: 30px;
+}
+
+.card-text-body {
+    margin-bottom: 0px;
+}
+
+.text-floatL {
+    float: left;
+}
+
+.card-caption {
+    margin-bottom: 0;
+}
+
+.button-pos {
+    position: absolute;
+    bottom: 315px;
+    right: 15px;
+}
+
+.text-floatR {
+    float: right;
+}
+
+.text-clear-float{
+    clear: both;
+}
+
+.badge-space {
+    margin-left: 5px;
+}
+
+.button-floatR {
+    float: right;
+}
