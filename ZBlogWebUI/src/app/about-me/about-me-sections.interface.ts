@@ -31,6 +31,7 @@ export interface Education {
 }
 
 export interface Skill {
+    id: number;
     type: string;
     skillSets: SkillSet[];
     imgUrl: string;

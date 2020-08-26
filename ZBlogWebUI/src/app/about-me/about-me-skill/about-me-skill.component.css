@@ -11,3 +11,11 @@
 .card-margin {
     margin-bottom: 30px;
 }
+
+.button-floatR {
+    float: right;
+}
+
+h5.card-title {
+    display: inline-block;
+}

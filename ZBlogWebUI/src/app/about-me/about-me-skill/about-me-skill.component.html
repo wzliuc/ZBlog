@@ -1,7 +1,8 @@
-<div class="card card-margin" *ngFor="let skill of mySkills">
+<div class="card card-margin" *ngFor="let skill of mySkill$ | async">
   <img [src]="skill.imgUrl" class="card-img-top card-img-crop" alt="skill">
   <div class="card-body">
     <h5 class="card-title">{{ skill.type}}</h5>
+    <button class="btn btn-outline-primary btn-sm button-floatR" type="button" [routerLink]="skill.id">Edit</button>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item" *ngFor="let set of skill.skillSets">
@@ -9,3 +10,4 @@
     </li>
   </ul>
 </div>
+<button class="btn btn-outline-primary button-floatR" type="button" routerLink='0'>Add</button>

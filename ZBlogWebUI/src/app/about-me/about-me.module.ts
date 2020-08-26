@@ -6,20 +6,22 @@ import { AboutMeListComponent } from './about-me-list/about-me-list.component';
 import { AboutMeEducationComponent } from './about-me-education/about-me-education.component';
 import { AboutMeRoutingModule } from './about-me-routing.module';
 import { AboutMeExperienceComponent } from './about-me-experience/about-me-experience.component';
-import { AboutMeSkillsComponent } from './about-me-skills/about-me-skills.component';
 import { ExperienceEditComponent } from './about-me-experience/experience-edit/experience-edit.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomAdapter, CustomDateParserFormatter } from './about-me-experience/experience-services/datepicker.adapter';
 import { EducationEditComponent } from './about-me-education/education-edit/education-edit.component';
+import { AboutMeSkillComponent } from './about-me-skill/about-me-skill.component';
+import { SkillEditComponent } from './about-me-skill/skill-edit/skill-edit.component';
 
 @NgModule({
   declarations: [
     AboutMeListComponent, 
     AboutMeEducationComponent, 
     AboutMeExperienceComponent, 
-    AboutMeSkillsComponent,
+    AboutMeSkillComponent,
     ExperienceEditComponent,
-    EducationEditComponent
+    EducationEditComponent,
+    SkillEditComponent
   ],
   imports: [
     CommonModule,
